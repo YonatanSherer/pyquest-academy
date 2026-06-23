@@ -1,77 +1,202 @@
-# Base44 Project
+# PyQuest Academy
 
-Use this repository to run and edit the app locally, then publish changes back through Base44.
+A premium, gamified Python learning app for school students.
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+**PyQuest Academy** teaches beginner Python topics through short explanations, simple examples, and playful interactive exercises. The app is designed to make programming feel approachable, visual, and fun for students who are just starting to code.
 
-## Prerequisites
+## Live App
 
-1. Clone the repository using the project's Git URL.
+https://pyquestacademy.base44.app/
+
+## About the Project
+
+PyQuest Academy was built as a portfolio project to demonstrate how an educational web app can combine:
+
+* simple learning content
+* gamification
+* interactive exercises
+* animated feedback
+* responsive design
+* premium UI/UX
+
+The goal is to create a learning experience that feels modern, playful, and easy to use, while still teaching real Python fundamentals.
+
+## Target Audience
+
+PyQuest Academy is designed for:
+
+* school students
+* beginner programmers
+* students learning Python for the first time
+* teachers looking for simple programming practice activities
+
+## Learning Flow
+
+Each topic follows a simple structure:
+
+1. **Learn** — short explanation of the topic
+2. **Example** — simple Python code example
+3. **Practice** — playful exercise
+4. **Feedback** — correct/wrong answer animation
+5. **Reward** — XP, progress, and lesson completion
+
+## Python Topics
+
+The app introduces beginner Python topics such as:
+
+* What is programming?
+* `print()`
+* Variables
+* Strings and numbers
+* `input()`
+* `if / else`
+* Loops
+* Lists
+* Functions
+* Mini final challenge
+
+## Exercise Types
+
+PyQuest Academy includes interactive practice formats such as:
+
+* Multiple choice
+* Fill in the missing code
+* Arrange code blocks
+* Predict the output
+* Find the bug
+* Complete the code
+
+For the current version, exercises use predefined validation logic instead of a real Python compiler. This keeps the app lightweight, safe, and simple for a beginner-friendly learning experience.
+
+## Main Features
+
+* Gamified lesson path
+* Beginner-friendly Python lessons
+* Interactive exercises
+* XP and progress tracking
+* Streak / hearts / rewards system
+* Correct and wrong answer feedback
+* Animated transitions and micro-interactions
+* Lesson completion screen
+* Responsive mobile-first design
+* Premium dark tech-inspired UI
+* Sound/motion settings where supported
+* “Made by Sherer Web Studio” credit link
+
+## Design Goals
+
+The app was designed to feel:
+
+* premium
+* animated
+* modern
+* playful but not childish
+* simple to understand
+* quick to start using
+* suitable for desktop, tablet, and mobile
+
+## Tech Stack
+
+* React
+* JavaScript
+* Tailwind CSS
+* Base44
+* Responsive Web Design
+* Gamified UI/UX
+* Educational App Design
+
+## Local Development
+
+This project was created with Base44 and can be run locally.
+
+### Prerequisites
+
+1. Clone the repository.
 2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
+3. Install dependencies:
 
-See the [Base44 CLI docs](https://docs.base44.com/developers/references/cli/get-started/overview) if you want to run Base44 commands directly.
+```bash
+npm install
+```
+
+4. Install the Base44 CLI if needed:
+
+```bash
+npm install -g base44@latest
+```
 
 ## Run Locally
 
-Run the full local development environment from the project root:
+Run the full local Base44 development environment:
 
 ```bash
 base44 dev
 ```
 
-`base44 dev` starts the local Base44 development backend and, when this app is configured for it, also starts the frontend dev server for you. Use the frontend URL printed by the command.
+This starts the local Base44 development backend and, when configured, also starts the frontend dev server.
 
-For example, when the Base44 project config includes a `serveCommand`, `base44 dev` can launch the frontend too:
+## Run Only the Frontend
 
-```json5
-{
-  "site": {
-    "serveCommand": "npm run dev"
-  }
-}
-```
-
-In a Base44 project this lives in `base44/config.jsonc`.
-
-## Run Only The Frontend
-
-If you only want to work on the frontend against the hosted Base44 backend, run:
+To run only the frontend against the hosted Base44 backend:
 
 ```bash
 npm run dev
 ```
 
-Open the local URL printed by Vite.
+Create or update `.env.local` if needed:
 
-## Use The Hosted Backend
-
-For frontend-only development, create or update `.env.local` in the project root:
-
-```bash
+```env
 VITE_BASE44_APP_ID=your_app_id
 VITE_BASE44_APP_BASE_URL=https://your-app.base44.app
 ```
 
-`VITE_BASE44_APP_ID` identifies the Base44 app.
+Important: do not commit real secrets, private keys, or sensitive environment variables.
 
-`VITE_BASE44_APP_BASE_URL` tells the Base44 Vite plugin where to send local `/api` requests. Point it at your deployed Base44 app URL when you want the local frontend to use the hosted backend.
+## Deployment
 
-When you use `base44 dev`, the command injects the local Base44 values for you, so `.env.local` is mainly needed for frontend-only workflows.
+The app is managed and published through Base44.
 
-## Publish Your Changes
-
-After pushing your changes to git, open the Base44 dashboard and publish the app:
+After pushing changes to GitHub, open the Base44 dashboard and publish the latest version.
 
 ```bash
 base44 dashboard open
 ```
 
-## Docs & Support
+## Project Status
 
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
+Active portfolio project.
 
-Base44 CLI command reference: [https://docs.base44.com/developers/references/cli/commands/introduction](https://docs.base44.com/developers/references/cli/commands/introduction)
+Current focus:
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+* improving lesson content
+* polishing animations
+* improving mobile layout
+* adding more beginner Python exercises
+* enhancing the gamified learning experience
+
+## Future Improvements
+
+Possible future additions:
+
+* real Python code execution sandbox
+* student accounts and saved progress
+* teacher dashboard
+* more lesson modules
+* daily challenges
+* badges and achievements
+* classroom mode
+* multilingual support
+
+## Author
+
+**Yonatan Sherer**
+Sherer Web Studio
+
+GitHub: https://github.com/YonatanSherer
+Website: https://shererwebstudio.base44.app
+
+## License
+
+All rights reserved.
+
+This project is part of my personal portfolio and is not intended for unrestricted reuse without permission.
