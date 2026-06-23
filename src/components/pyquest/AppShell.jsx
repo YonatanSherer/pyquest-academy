@@ -38,7 +38,7 @@ export default function AppShell({ children }) {
         {navItems.map((item) => {
           const isActive = pathname === item.path;
           return (
-            <Link key={item.path} to={item.path} className="flex flex-col items-center gap-0.5 px-4 py-1 relative">
+            <Link key={item.path} to={item.path} onClick={playTap} className="flex flex-col items-center gap-0.5 px-4 py-1 relative">
               {isActive && (
                 <motion.div
                   layoutId="nav-indicator"
