@@ -7,6 +7,8 @@ import AppShell from "@/components/pyquest/AppShell";
 import Mascot from "@/components/pyquest/Mascot";
 import GlassCard from "@/components/pyquest/GlassCard";
 import { LESSONS, BADGES } from "@/lib/lessonData";
+import { setSoundEnabled, playComplete, playBadge } from "@/lib/soundUtils";
+import { getOrCreateProgress } from "@/lib/progressUtils";
 
 export default function LessonComplete() {
   const { lessonId } = useParams();
@@ -18,6 +20,13 @@ export default function LessonComplete() {
   const { xpGain = 0, correctCount = 0, total = 0, newBadges = [], perfect = false } = state;
 
   useEffect(() => {
+    // Play completion sound
+    getOrCreateProgress().then(p => {
+      setSoundEnabled(p.sound_enabled !== false);
+      if (newBadges.length > 0) playBadge();
+      else playComplete();
+    });
+
     // Celebration confetti
     const duration = 2000;
     const end = Date.now() + duration;

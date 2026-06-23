@@ -75,6 +75,13 @@ export const LESSONS = [
         hint: "Count the parentheses — do they match?"
       },
       {
+        type: "complete-code",
+        question: "Complete the code to print your name on two lines:",
+        codeTemplate: 'print("My name is")\n___("Alex")',
+        answer: 'print',
+        hint: "Use the same function on both lines."
+      },
+      {
         type: "multiple-choice",
         question: "Which prints the number 100?",
         options: ["print(100)", 'print("100")', "Both work!", "Neither works"],
@@ -127,6 +134,13 @@ export const LESSONS = [
         ],
         correctIndex: 0,
         hint: "Order matters — can you use something before it exists?"
+      },
+      {
+        type: "complete-code",
+        question: "Complete the code to create a variable and change its value:",
+        codeTemplate: 'score = 10\n___ = 20\nprint(score)',
+        answer: "score",
+        hint: "To change a variable, use its name again with a new value."
       }
     ]
   },
@@ -174,6 +188,13 @@ export const LESSONS = [
         ],
         correctIndex: 0,
         hint: '"15" is a string, but 1 is a number.'
+      },
+      {
+        type: "complete-code",
+        question: "Complete the code to convert the string to a number and add 1:",
+        codeTemplate: 'age = "15"\nprint(int(___) + 1)',
+        answer: "age",
+        hint: "Pass the variable name to int() to convert it."
       }
     ]
   },
@@ -260,6 +281,14 @@ export const LESSONS = [
         ],
         correctIndex: 0,
         hint: "if statements need something at the end of the line..."
+      },
+      {
+        type: "complete-code",
+        question: "Complete the code to print \"Adult\" if age is 18 or older:",
+        codeTemplate: 'age = 20\nif age ___ 18:\n    print("Adult")',
+        answer: ">=",
+        acceptableAnswers: [">=", ">"],
+        hint: "Which operator means 'greater than or equal to'?"
       }
     ]
   },
@@ -299,6 +328,13 @@ export const LESSONS = [
         ],
         correctIndex: 0,
         hint: "What needs to change for the loop to eventually stop?"
+      },
+      {
+        type: "complete-code",
+        question: "Complete the code to print each fruit in the list:",
+        codeTemplate: 'fruits = ["apple", "banana"]\nfor fruit in ___:\n    print(fruit)',
+        answer: "fruits",
+        hint: "Loop through the list variable."
       }
     ]
   },
@@ -340,6 +376,13 @@ export const LESSONS = [
         options: ["my_list = []", 'my_list = ""', "my_list = ()", "my_list = {}"],
         correctIndex: 0,
         hint: "Lists use square brackets."
+      },
+      {
+        type: "complete-code",
+        question: "Complete the code to get the first item from the list:",
+        codeTemplate: 'colors = ["red", "blue", "green"]\nfirst = colors[___]\nprint(first)',
+        answer: "0",
+        hint: "Lists start counting from 0."
       }
     ]
   },
@@ -390,6 +433,13 @@ export const LESSONS = [
         ],
         correctIndex: 0,
         hint: "The function calculates the result but never sends it back..."
+      },
+      {
+        type: "complete-code",
+        question: "Complete the function to return the square of a number:",
+        codeTemplate: 'def square(n):\n    ___ n * n\n\nprint(square(5))',
+        answer: "return",
+        hint: "Which keyword sends a value back from a function?"
       }
     ]
   },

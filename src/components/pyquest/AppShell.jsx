@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, Map, Trophy, Settings } from "lucide-react";
+import AnimatedBackground from "./AnimatedBackground";
+import { playTap } from "@/lib/soundUtils";
 
 const navItems = [
   { path: "/dashboard", icon: Home, label: "Home" },
@@ -18,8 +20,9 @@ export default function AppShell({ children }) {
       className="min-h-screen flex flex-col relative"
       style={{ background: "linear-gradient(180deg, #0f0a1e 0%, #1a1035 50%, #0d1b2a 100%)" }}
     >
+      <AnimatedBackground />
       {/* Content */}
-      <div className="flex-1 pb-20 overflow-y-auto">
+      <div className="flex-1 pb-20 overflow-y-auto" style={{ position: "relative", zIndex: 1 }}>
         {children}
       </div>
 

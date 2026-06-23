@@ -5,6 +5,7 @@ import AppShell from "@/components/pyquest/AppShell";
 import GlassCard from "@/components/pyquest/GlassCard";
 import Mascot from "@/components/pyquest/Mascot";
 import { getOrCreateProgress, updateProgress } from "@/lib/progressUtils";
+import { setSoundEnabled, playTap } from "@/lib/soundUtils";
 import { base44 } from "@/api/base44Client";
 
 export default function AppSettings() {
@@ -12,7 +13,11 @@ export default function AppSettings() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getOrCreateProgress().then(p => { setProgress(p); setLoading(false); }).catch(() => setLoading(false));
+    getOrCreateProgress().then(p => {
+      setProgress(p);
+      setSoundEnabled(p.sound_enabled !== false);
+      setLoading(false);
+    }).catch(() => setLoading(false));
   }, []);
 
   if (loading) {
@@ -26,8 +31,13 @@ export default function AppSettings() {
   }
 
   const toggleSetting = async (key) => {
-    const updated = await updateProgress(progress.id, { [key]: !progress[key] });
+    const newValue = !progress[key];
+    const updated = await updateProgress(progress.id, { [key]: newValue });
     setProgress(updated);
+    if (key === "sound_enabled") {
+      setSoundEnabled(newValue);
+      if (newValue) playTap();
+    }
   };
 
   const rm = progress?.reduced_motion || false;

@@ -11,6 +11,8 @@ import ExerciseFillBlank from "@/components/pyquest/ExerciseFillBlank";
 import ExerciseArrangeBlocks from "@/components/pyquest/ExerciseArrangeBlocks";
 import { LESSONS, isLessonUnlocked, getLevelFromXP } from "@/lib/lessonData";
 import { getOrCreateProgress, updateProgress, calculateStreak, checkNewBadges } from "@/lib/progressUtils";
+import { setSoundEnabled, playCorrect, playWrong, playComplete, playBadge } from "@/lib/soundUtils";
+import XPPopup from "@/components/pyquest/XPPopup";
 
 export default function Exercise() {
   const { lessonId } = useParams();
@@ -28,11 +30,13 @@ export default function Exercise() {
   const [showHint, setShowHint] = useState(false);
   const [mascotMood, setMascotMood] = useState("thinking");
   const [mascotMsg, setMascotMsg] = useState("You got this! 💪");
+  const [showXPPopup, setShowXPPopup] = useState(false);
 
   useEffect(() => {
     getOrCreateProgress().then(p => {
       setProgress(p);
       setHearts(p.hearts ?? 5);
+      setSoundEnabled(p.sound_enabled !== false);
       setLoading(false);
     }).catch(() => setLoading(false));
   }, []);
@@ -63,8 +67,11 @@ export default function Exercise() {
     setCorrectCount(c => c + 1);
     setMascotMood("happy");
     setMascotMsg(["Nice one! 🎉", "Perfect! ⚡", "You're a natural! 🌟", "Awesome! 🚀"][Math.floor(Math.random() * 4)]);
+    playCorrect();
     if (!rm) {
       confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 }, colors: ["#6366f1", "#a855f7", "#22d3ee", "#10b981"] });
+      setShowXPPopup(true);
+      setTimeout(() => setShowXPPopup(false), 1000);
     }
   };
 
@@ -75,6 +82,7 @@ export default function Exercise() {
     setHearts(newHearts);
     setMascotMood("sad");
     setMascotMsg(["Don't worry, try the next one!", "Almost! Keep going! 💪", "Learning from mistakes! 📚"][Math.floor(Math.random() * 3)]);
+    playWrong();
   };
 
   const handleMultipleChoiceAnswer = (index) => {
@@ -144,8 +152,10 @@ export default function Exercise() {
       const newBadges = checkNewBadges({ ...progress, ...updatedData });
       if (newBadges.length > 0) {
         updatedData.badges = [...(progress.badges || []), ...newBadges];
+        playBadge();
       }
 
+      playComplete();
       await updateProgress(progress.id, updatedData);
 
       navigate(`/lesson-complete/${lessonId}`, {
@@ -161,12 +171,14 @@ export default function Exercise() {
       "arrange-blocks": "Arrange the Code",
       "predict-output": "Predict the Output",
       "find-bug": "Find the Bug",
+      "complete-code": "Complete the Code",
     };
     return map[type] || "Exercise";
   };
 
   return (
     <AppShell>
+      <XPPopup show={showXPPopup} amount={Math.round(lesson.xpReward / exercises.length)} reducedMotion={rm} />
       <div className="px-4 pt-4 pb-8 max-w-lg mx-auto space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -229,7 +241,7 @@ export default function Exercise() {
               />
             )}
 
-            {exercise.type === "fill-blank" && (
+            {(exercise.type === "fill-blank" || exercise.type === "complete-code") && (
               <ExerciseFillBlank
                 exercise={exercise}
                 onAnswer={handleFillBlankAnswer}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import Mascot from "@/components/pyquest/Mascot";
+import AnimatedBackground from "@/components/pyquest/AnimatedBackground";
 import { ChevronRight, Code2, Sparkles } from "lucide-react";
 
 export default function Welcome() {
@@ -19,6 +20,7 @@ export default function Welcome() {
         style={{ background: "radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%)" }} />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full opacity-10"
         style={{ background: "radial-gradient(circle, rgba(6,182,212,0.5) 0%, transparent 70%)" }} />
+      <AnimatedBackground />
 
       <AnimatePresence mode="wait">
         {step === 0 && (
