@@ -1,0 +1,65 @@
+{
+  "name": "StudentProgress",
+  "type": "object",
+  "properties": {
+    "xp": {
+      "type": "number",
+      "default": 0
+    },
+    "level": {
+      "type": "number",
+      "default": 1
+    },
+    "hearts": {
+      "type": "number",
+      "default": 5
+    },
+    "streak": {
+      "type": "number",
+      "default": 0
+    },
+    "last_activity_date": {
+      "type": "string"
+    },
+    "completed_lessons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "current_lesson": {
+      "type": "string",
+      "default": "what-is-programming"
+    },
+    "badges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lesson_scores": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "total_exercises_completed": {
+      "type": "number",
+      "default": 0
+    },
+    "best_streak": {
+      "type": "number",
+      "default": 0
+    },
+    "hearts_last_refill": {
+      "type": "string"
+    },
+    "sound_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "reduced_motion": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": []
+}
