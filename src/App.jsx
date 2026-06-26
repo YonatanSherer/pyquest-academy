@@ -12,7 +12,8 @@ import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ResetPassword from '@/pages/ResetPassword';
-import Welcome from '@/pages/Welcome';
+import Landing from '@/pages/Landing';
+import DemoLesson from '@/pages/DemoLesson';
 import Dashboard from '@/pages/Dashboard';
 import LessonPath from '@/pages/LessonPath';
 import LessonContent from '@/pages/LessonContent';
@@ -43,12 +44,13 @@ const AuthenticatedApp = () => {
 
   return (
     <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/demo" element={<DemoLesson />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
-        <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/lessons" element={<LessonPath />} />
         <Route path="/lesson/:lessonId" element={<LessonContent />} />
